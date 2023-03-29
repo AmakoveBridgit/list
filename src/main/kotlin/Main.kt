@@ -1,76 +1,81 @@
-import kotlin.reflect.typeOf
+fun main() {
+//1. Given a list of 10 strings, write a function that returns a list of the strings
+//at even indices i.e index 2,4,6 etc
 
-fun main(){
-    val names = listOf("marion","Angie","Waweru","Diana")
-    println(names)
-    val phoneNumbers= mutableListOf("0723453473","0712453672","0702435678")
-    phoneNumbers.add("0716588256")
-    println(phoneNumbers)
-
-    val nums= listOf(31,243,31,32,5,67,90,21,45,6)
-    println(nums.count())
-    println(nums.max())
-    println(nums.min())
-    println(nums.sum())
-    println(nums.average())
-    println(nums.first())
-    println(nums.last())
-
-
-    println(nums[6])
-    println(nums.get(6))
-    println(nums.indexOf(67))
-    println(nums.lastIndex)
-    println(nums.lastIndexOf(31))
-    println(nums.size)
-
-//    val mazda=Car("Mazda","Demio")
-//    mazda.make
-//    mazda.getMake()
-//    println(mazda is Car)
-
-    for (y in nums) {
-        println(y)
-    }
-    nums.forEach{nums-> println(nums) }
-
-    nums.sorted()
-    println(nums)
-   val sortedNUms=nums.sortedDescending()
-  println(sortedNUms)
-//   nums.reverse
-//    nums.sortedAscending()
-createStudentList()
-    val evenNums=nums.filter { num->num%2==0 }
-    println(evenNums)
-    val oddNums=nums.filter { num->num%2!==0 }
-    println(oddNums)
-    val friends= listOf("Adams","Harming","Grant","Edison","Michael")
-    val longNames=friends.filter { friend->friend.length>5 }
-    println(longNames.size)
-
-
+    personObject()
+    height()
+    var a = Vehicles("KBD020F",50)
+    var b = Vehicles("KDA230G",60)
+    var c= Vehicles("KFC374P",80)
+    var d = Vehicles("KAC354V",65)
+    var listVehicles= listOf(a,b,c,d)
+    println(vehicleList(listVehicles))
 
 
 }
-////class Car(var make:String,var model:String){
-////    fun getMake():String{
-////        return make
-//    }
-//}
-//creating list from custom datatypes
-data class Student(var name:String,var age:Int)
-fun createStudentList(){
-    val student1=Student("Grace",20)
-    val student2=Student("Mary",40)
-    val student3=Student("Jane",10)
-    val student4=Student("Bree",30)
-    val studentslist=listOf(student1,student2,student3,student4)
-    println(studentslist)
-//    multidimensional array
-    println(studentslist[0].age)
-    val sorted=studentslist.sortedBy { student -> student.name }
-    println(sorted)
+fun  listNames(Name:List<String>):List<String> {
+    Name.forEachIndexed { index, s ->
+        if (index % 2 == 0) {
+            println(s)
+        }
+    }
+    return Name
 
 
+}
+
+
+
+//2.Given a list of people’s heights in metres. Write a function that returns
+//the average height and the total height
+
+fun height(){
+    var num= mutableListOf(3,1,2,8,7)
+    println(num.average())
+    println(num.sum())
+
+}
+
+
+//3.Given a list of Person objects, each with the attributes, name, age,
+//height and weight. Sort the list in order of descending age
+data class Person(var name:String,var age:Int,var height:Int,var weight:Int)
+fun personObject(){
+    val persona1=Person("Mercy",23,6,40)
+    val persona2=Person("Shiro",20,7,50)
+    val persona3=Person("Bree",25,8,60)
+    val persona4=Person("Brenda",22,7,45)
+    val persona5=Person("Belyse",21,6,35)
+    val personalist=listOf(persona1,persona2,persona3,persona4,persona5)
+    println(personalist)
+    val sortedDesc=personalist.sortedByDescending { persona-> persona.age}
+    println(sortedDesc)
+
+
+}
+
+//4.Given a list similar to the one above, write a function in which you will
+//create 2 more people objects and add them to the list at one go.
+fun addList():String{
+    val persona5=Person("Mano",25,6,70)
+    val persona6=Person("Shiko",28,7,55)
+    return
+
+}
+
+
+
+
+//5.Write a function that takes in a list of Car objects each with a
+//registration and mileage attribute and returns the average mileage of
+//all the vehicles in the list.
+
+data class Vehicles(var registration:String, var mileage:Int)
+fun vehicleList(vehicle:List<Vehicles>):Int{
+    var average=0
+    vehicle.forEach { new->new.mileage
+        average+=new.mileage
+    }
+    var totalAverage=vehicle.count()
+    return totalAverage
 }
